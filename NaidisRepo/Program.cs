@@ -170,12 +170,19 @@ namespace NaidisRepo
                 Console.WriteLine("Milline ÜL kas te tahaksite üle vaadata?");
                 Console.WriteLine();
 
-                Console.WriteLine("1  - Juhuslike arvude ruudud (TODO)");
+                Console.WriteLine("1  - Juhuslike arvude ruudud"); // TODO
                 Console.WriteLine("2  - Viie arvu analüüs");
                 Console.WriteLine("3  - Nimed ja vanused");
                 Console.WriteLine("4  - Osta elevant ära!");
                 Console.WriteLine("5  - Arvamise mäng");
-                Console.WriteLine("6  - Suurim neliarvuline arv");
+                Console.WriteLine("6  - Suurim neliarvuline arv"); // TODO
+                Console.WriteLine("7  - Korrutustabel");
+                Console.WriteLine("8  - Õpilastega mängimine");
+                Console.WriteLine("9  - Arvude ruudud");
+                Console.WriteLine("10 - Positiivsed ja negatiivsed");
+                Console.WriteLine("11 - Keskmisest suuremad");
+                Console.WriteLine("12 - Kõige suurema arvu otsing");
+                Console.WriteLine("13 - Paari- ja paaritud loendused");
                 Console.WriteLine("0  - Tagasi");
                 Console.WriteLine();
 
@@ -198,6 +205,31 @@ namespace NaidisRepo
                         break;
                     case "5":
                         Kolmas_osa_funktsioonid.ArvamiseMang();
+                        break;
+                    case "6":
+                        Console.WriteLine("Ei ole see ülesanne veel valmis. Tulge tagasi hiljem.");
+                        //Kolmas_osa_funktsioonid.SuurimNeliarvulineArv();
+                        break;
+                    case "7":
+                        Kolmas_osa_funktsioonid.Korrutustabel();
+                        break;
+                    case "8":
+                        Kolmas_osa_funktsioonid.OpilastegaMangimine();
+                        break;
+                    case "9":
+                        Kolmas_osa_funktsioonid.ArvudeRuudud();
+                        break;
+                    case "10":
+                        Kolmas_osa_funktsioonid.PositNegNull();
+                        break;
+                    case "11":
+                        Kolmas_osa_funktsioonid.KeskmisestSuuremad();
+                        break;
+                    case "12":
+                        Kolmas_osa_funktsioonid.SuurimArvJaIndeks();
+                        break;
+                    case "13":
+                        Kolmas_osa_funktsioonid.PaarJaPaarituStat();
                         break;
                     case "0":
                         Console.Clear();

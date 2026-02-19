@@ -13,12 +13,12 @@ namespace NaidisRepo
 
             double[] arvud = Tekstist_arvud();
 
-            var t = AnaluusiArve(arvud);
+            var tuple = AnalüüsiArve(arvud);
 
             Console.WriteLine("\nTulemused:");
-            Console.WriteLine("Summa: " + t.Item1);
-            Console.WriteLine("Keskmine: " + t.Item2);
-            Console.WriteLine("Korrutis: " + t.Item3);
+            Console.WriteLine("Summa: " + tuple.Item1);
+            Console.WriteLine("Keskmine: " + tuple.Item2);
+            Console.WriteLine("Korrutis: " + tuple.Item3);
         }
 
         public static double[] Tekstist_arvud()
@@ -37,7 +37,7 @@ namespace NaidisRepo
             return arvud;
         }
 
-        public static Tuple<double, double, double> AnaluusiArve(double[] arvud)
+        public static Tuple<double, double, double> AnalüüsiArve(double[] arvud)
         {
             double summa = 0;
             double korrutis = 1;
@@ -122,7 +122,7 @@ namespace NaidisRepo
 
             List<string> sisestused = KuniMarksonani(marksõna, fraas);
 
-            Console.WriteLine("\nKõik sisestused:");
+            Console.WriteLine("\nKogu dialoog:");
             for (int i = 0; i < sisestused.Count; i++)
             {
                 Console.WriteLine((i + 1) + ") " + sisestused[i]);
@@ -190,7 +190,7 @@ namespace NaidisRepo
 
                 if (arv == juhuArv)
                 {
-                    Console.WriteLine($"Tubli! Arv oli {juhuArv}.");
+                    Console.WriteLine($"Õige! Arv oli {juhuArv}.");
                     return;
                 }
                 else if (arv > juhuArv)
@@ -206,5 +206,290 @@ namespace NaidisRepo
             Console.WriteLine("Katseid sai otsa! = ( Õige arv oli " + juhuArv);
         }
 
+
+        public static void Korrutustabel()
+        {
+            Console.Clear();
+            Console.WriteLine("7. Korrutustabel\n");
+
+            Console.Write("Sisesta ridade arv: ");
+            int read = int.Parse(Console.ReadLine());
+
+            Console.Write("Sisesta veergude arv: ");
+            int veerud = int.Parse(Console.ReadLine());
+
+            GenereeriKorrutustabel(read, veerud);
+        }
+
+        // https://github.com/MarinaOleinik/Naidis_IKTpv25/commit/4e97e57
+        public static int[,] GenereeriKorrutustabel(int read, int veerud)
+        {
+            int[,] tabel = new int[read, veerud];
+            for (int i = 0; i < read; i++)
+            {
+                for (int j = 0; j < veerud; j++)
+                {
+                    tabel[i, j] = (i + 1) * (j + 1);
+                    Console.Write($"{tabel[i, j]}\t");
+                }
+                Console.WriteLine();
+            }
+            return tabel;
+        }
+
+        public static void OpilastegaMangimine()
+        {
+            Console.Clear();
+            Console.WriteLine("8. Õpilastega mängimine\n");
+
+            string[] nimed = ["Artjom", "Mari", "Andres", "Anna", "Alo", "Peeter", "Ann", "Juku", "Siim", "Deniss"];
+
+            nimed[2] = "Kati";
+            nimed[5] = "Mati";
+
+            int i = 0;
+            while (i < nimed.Length)
+            {
+                if (nimed[i].StartsWith("A"))
+                {
+                    Console.WriteLine($"Tere, {nimed[i]}!");
+                }
+                i = i + 1;
+            }
+
+            //Kasutab for tsüklit, et väljastada kõik nimed ja nende indeksid
+            for (int j = 0; j < nimed.Length; j++)
+            {
+                Console.WriteLine(j + " - " + nimed[j]);
+            }
+
+            //Kasutab foreach tsüklit, et väljastada kõik nimed väikeste tähtedena.
+            foreach (var nimi in nimed)
+            {
+                Console.WriteLine(nimi.ToLower());
+            }
+
+            //Kasutab do-while tsüklit, et tervitada õpilasi seni, kuni kohtab nime "Mati".
+            int i2 = 0;
+            do
+            {
+                Console.WriteLine($"Tere, {nimed[i2]}!");
+
+                if (nimed[i2] == "Mati")
+                {
+                    Console.WriteLine("Leidsin Mati!");
+                    break;
+                }
+
+                i2 = i2 + 1;
+
+            } while (i2 < nimed.Length);
+        }
+
+        public static void ArvudeRuudud()
+        {
+            Console.Clear();
+            Console.WriteLine("9. Arvude ruudud\n");
+
+            int[] arvud = { 2, 4, 6, 8, 10, 12 };
+
+            Console.WriteLine("ruudud (for)");
+            for (int i = 0; i < arvud.Length; i++)
+            {
+                Console.WriteLine(arvud[i] + " -> " + (arvud[i] * arvud[i]));
+            }
+
+            Console.WriteLine("\n kahekordne arvu väärtus (foreach)");
+            foreach (int a in arvud)
+            {
+                Console.WriteLine(a + " -> " + (a * 2));
+            }
+
+            Console.WriteLine("\nkui palju jagub 3-ga (while)");
+            int nr = 0;
+            int count = 0;
+            while (nr < arvud.Length)
+            {
+                if (arvud[nr] % 3 == 0)
+                {
+                    count = count + 1;
+                }
+                nr = nr + 1;
+            }
+            Console.WriteLine($"{count} numbrid jaguvad 3-ga");
+        }
+
+        public static void PositNegNull()
+        {
+            Console.Clear();
+            Console.WriteLine("10. Positiivsed ja negatiivsed\n");
+
+            int[] arvud = { 5, -3, 0, 8, -1, 4, -7, 2, 0, -5, 6, 9 };
+
+            int pos = 0;
+            int neg = 0;
+            int zero = 0;
+
+            foreach (int a in arvud)
+            {
+                if (a > 0)
+                {
+                    pos += 1;
+                }
+                else if (a < 0)
+                {
+                    neg += 1;
+                }
+                else { 
+                    zero += 1; 
+                }
+            }
+
+            Console.WriteLine($"Positiivseid: {pos}");
+            Console.WriteLine($"Negatiivseid: {neg}");
+            Console.WriteLine($"Nulle: {zero}");
+        }
+
+        public static void KeskmisestSuuremad()
+        {
+            Console.Clear();
+            Console.WriteLine("11. Keskmisest suuremad\n");
+
+            Random rnd = new Random();
+            int[] arvud = new int[15];
+
+            int summa = 0;
+
+            for (int i = 0; i < arvud.Length; i++)
+            {
+                arvud[i] = rnd.Next(1, 101);
+                summa = summa + arvud[i];
+            }
+
+            double keskmine = (double)summa / arvud.Length;
+
+            Console.WriteLine("Arvud:");
+            for (int i = 0; i < arvud.Length; i++)
+            {
+                Console.Write(arvud[i] + " ");
+            }
+
+            Console.WriteLine("\n\nKeskmine: " + keskmine);
+            Console.WriteLine("Suuremad kui keskmine:");
+
+            for (int i = 0; i < arvud.Length; i++)
+            {
+                if (arvud[i] > keskmine)
+                {
+                    Console.Write(arvud[i] + " ");
+                }
+            }
+
+            Console.WriteLine("\n\nVäljastame numbreid kuni kohtame arvu < 10 do-whileiga");
+            int idx = 0;
+            do
+            {
+                Console.Write(arvud[idx] + " ");
+                idx = idx + 1;
+
+                if (idx >= arvud.Length)
+                {
+                    break;
+                }
+
+            } while (arvud[idx - 1] >= 10);
+
+            Console.WriteLine();
+        }
+
+        public static void SuurimArvJaIndeks()
+        {
+            Console.Clear();
+            Console.WriteLine("12. Kõige suurema arvu otsing\n");
+
+            int[] numbrid = { 12, 56, 78, 2, 90, 43, 88, 67 };
+
+            int max = numbrid[0];
+            int maxIndex = 0;
+
+            for (int i = 1; i < numbrid.Length; i++)
+            {
+                if (numbrid[i] > max)
+                {
+                    max = numbrid[i];
+                    maxIndex = i;
+                }
+            }
+
+            Console.WriteLine("Suurim arv: " + max);
+            Console.WriteLine("Indeks: " + maxIndex);
+        }
+
+        public static void PaarJaPaarituStat()
+        {
+            Console.Clear();
+            Console.WriteLine("13. Paari- ja paaritud loendused\n");
+
+            Random rnd = new Random();
+            List<int> arvud = new List<int>();
+
+            // Genereerime listisse 20 juhuslikud täisarvud
+            for (int i = 0; i < 20; i++)
+            {
+                arvud.Add(rnd.Next(1, 101));
+            }
+
+            Console.WriteLine("Arvud:");
+            for (int i = 0; i < arvud.Count; i++)
+            {
+                Console.Write(arvud[i] + " ");
+            }
+            Console.WriteLine();
+
+            // foreach: even sum
+            int paarSumma = 0;
+            foreach (int a in arvud)
+            {
+                if (a % 2 == 0)
+                {
+                    paarSumma += a;
+                }
+            }
+
+            // for: odd avg
+            int paarituSumma = 0;
+            int paarituCount = 0;
+
+            for (int i = 0; i < arvud.Count; i++)
+            {
+                if (arvud[i] % 2 != 0)
+                {
+                    paarituSumma += arvud[i];
+                    paarituCount += 1;
+                }
+            }
+
+            double paarituKeskmine = 0;
+            if (paarituCount > 0)
+            {
+                paarituKeskmine = (double)paarituSumma / paarituCount;
+            }
+
+            // mitu arvu on suuremad kui 50
+            int idx = 0;
+            int suurem50 = 0;
+            while (idx < arvud.Count)
+            {
+                if (arvud[idx] > 50)
+                {
+                    suurem50 += 1;
+                }
+                idx += 1;
+            }
+
+            Console.WriteLine("\nPaarisarvude kogusumma: " + paarSumma);
+            Console.WriteLine("Paaritute keskmine: " + paarituKeskmine);
+            Console.WriteLine("Mitu arvu > 50: " + suurem50);
+        }
     }
 }
