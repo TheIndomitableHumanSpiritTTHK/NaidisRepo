@@ -24,4 +24,10 @@ namespace NaidisRepo
             Console.WriteLine($"Tere, minu nimi on {Nimi}!");
         }
     }
+
+    public class Inimene
+    {
+        public string Nimi;
+        public int Vanus;
+    }
 }

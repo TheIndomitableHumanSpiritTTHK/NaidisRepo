@@ -19,7 +19,7 @@ namespace NaidisRepo
 
                 Console.WriteLine("1. Osa Andmetüübid");
                 Console.WriteLine("2. Osa Funktsioonid");
-                Console.WriteLine("3. Osa");
+                Console.WriteLine("3. Osa Kordused, Listid ja Massiivid");
                 Console.WriteLine("4. Osa");
                 Console.WriteLine("5. Osa");
                 Console.WriteLine("0. Välja");
@@ -36,13 +36,13 @@ namespace NaidisRepo
                         Teine_osa();
                         break;
                     case "3":
-                        //Kood 3. osale
+                        Kolmas_osa();
                         break;
                     case "4":
-                        //Kood 4. osale
+                        Console.WriteLine("Ei ole see ülesanne veel valmis. Tulge tagasi hiljem.");
                         break;
                     case "5":
-                        //Kood 5. osale
+                        Console.WriteLine("Ei ole see ülesanne veel valmis. Tulge tagasi hiljem.");
                         break;
                     case "0":
                         Console.Clear();
@@ -161,6 +161,105 @@ namespace NaidisRepo
         }
 
 
+        public static void Kolmas_osa()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("3. osa Kordused, Listid ja Massiivid");
+                Console.WriteLine("Milline ÜL kas te tahaksite üle vaadata?");
+                Console.WriteLine();
+
+                Console.WriteLine("1  - Juhuslike arvude ruudud (TODO)");
+                Console.WriteLine("2  - Viie arvu analüüs");
+                Console.WriteLine("3  - Nimed ja vanused");
+                Console.WriteLine("4  - Osta elevant ära!");
+                Console.WriteLine("5  - Arvamise mäng");
+                Console.WriteLine("6  - Suurim neliarvuline arv");
+                Console.WriteLine("0  - Tagasi");
+                Console.WriteLine();
+
+                Console.Write("Sinu valik: ");
+                string valik = Console.ReadLine();
+
+                switch (valik)
+                {
+                    case "1":
+                        Console.WriteLine("Ei ole see ülesanne veel valmis. Tulge tagasi hiljem.");
+                        break;
+                    case "2":
+                        Kolmas_osa_funktsioonid.ViieArvuAnaluus();
+                        break;
+                    case "3":
+                        Kolmas_osa_funktsioonid.NimedJaVanused();
+                        break;
+                    case "4":
+                        Kolmas_osa_funktsioonid.OstaElevantAra();
+                        break;
+                    case "5":
+                        Kolmas_osa_funktsioonid.ArvamiseMang();
+                        break;
+                    case "0":
+                        Console.Clear();
+                        return;
+
+                    default:
+                        Console.WriteLine("Tundmatu valik. Vajuta Enter...");
+                        Console.ReadLine();
+                        continue;
+                }
+
+                Console.WriteLine("\nVajuta Enter, et menüüsse tagasi minna...");
+                Console.ReadLine();
+            }
+        }
+
+
+        public static void Kolmas_osa_old()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Tere, {i + 1}");
+            }
+            Console.WriteLine("While: ");
+            int j = 0;
+            while (j < 10)
+            {
+                Console.WriteLine($"Tere, {j + 1}");
+                j++;
+            }
+            Console.WriteLine("Do while: ");
+            do
+            {
+                Console.WriteLine($"Tere, {j}");
+                j--;
+            }
+            while (j != 0);
+
+            List<Isik> inimesed = new List<Isik>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.Write("Sisesta nimi: ");
+                string nimi = Console.ReadLine();
+
+                Console.Write("Sisesta vanus: ");
+                int vanus = int.Parse(Console.ReadLine());
+
+                Isik uusIsik = new Isik();
+                uusIsik.Nimi = nimi;
+                uusIsik.Vanus = vanus;
+
+                inimesed.Add(uusIsik);
+            }
+
+            Console.WriteLine("\nKõik inimesed tervitavad:\n");
+
+            foreach (Isik isik in inimesed)
+            {
+                isik.Tervita();
+            }
+        }
 
 
         ////Random rnd = new Random();
@@ -171,48 +270,6 @@ namespace NaidisRepo
 
         //Teine_class.JukuKino();
 
-        // Console.WriteLine("3. Osa. Kordused ja Listid, massivid");
-        //            for (int i = 0; i< 10; i++)
-        //            {
-        //                Console.WriteLine($"Tere, {i + 1}");
-        //            }
-        //    Console.WriteLine("While: ");
-        //            int j = 0;
-        //            while (j< 10)
-        //            {
-        //                Console.WriteLine($"Tere, {j + 1}");
-        //                j++;
-        //            }
-        //Console.WriteLine("Do while: ");
-        //do
-        //{
-        //    Console.WriteLine($"Tere, {j}");
-        //    j--;
-        //}
-        //while (j != 0);
 
-        //List<Isik> inimesed = new List<Isik>();
-
-        //for (int i = 0; i < 3; i++)
-        //{
-        //    Console.Write("Sisesta nimi: ");
-        //    string nimi = Console.ReadLine();
-
-        //    Console.Write("Sisesta vanus: ");
-        //    int vanus = int.Parse(Console.ReadLine());
-
-        //    Isik uusIsik = new Isik();
-        //    uusIsik.Nimi = nimi;
-        //    uusIsik.Vanus = vanus;
-
-        //    inimesed.Add(uusIsik);
-        //}
-
-        //Console.WriteLine("\nKõik inimesed tervitavad:\n");
-
-        //foreach (Isik isik in inimesed)
-        //{
-        //    isik.Tervita();
-        //}
     }
 }
